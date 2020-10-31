@@ -1,0 +1,20 @@
+## Java
+
+# Compiled classes
+out
+*.class
+
+
+## IntelliJ IDEA
+
+# Modules
+*.iml
+
+# Workspace settings
+.idea
+
+
+## Game
+
+# Saved games
+#*.sav
