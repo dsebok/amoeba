@@ -3,18 +3,17 @@ package com.amoeba.game;
 import java.util.List;
 
 public enum MenuOption {
-    NEW_GAME(new String[]{"1", "1.", "(1)", "[1]"}),
-    LOAD_GAME(new String[]{"2", "2.", "(2)", "[2]"}),
-    EXIT(new String[]{"3", "3.", "(3)", "[3]"});
+    NEW_GAME(List.of("1", "1.", "(1)", "[1]")),
+    LOAD_GAME(List.of("2", "2.", "(2)", "[2]")),
+    EXIT(List.of("3", "3.", "(3)", "[3]"));
 
-    private final String[] acceptedInputs;
+    private final List<String> acceptedInputs;
 
-    MenuOption(String[] acceptedInputs) {
+    MenuOption(List<String> acceptedInputs) {
         this.acceptedInputs = acceptedInputs;
     }
 
     public boolean acceptsThisInput(String input) {
-        List<String> acceptedList = List.of(acceptedInputs);
-        return acceptedList.contains(input);
+        return acceptedInputs.contains(input);
     }
 }

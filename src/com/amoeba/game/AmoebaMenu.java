@@ -11,7 +11,7 @@ public class AmoebaMenu implements Menu {
 
     private final Reader reader = new InputReader();
     private final Writer writer = new OutputWriter();
-    private final Game game = new AmoebaGame();
+    private final GameController gameController = new AmoebaController();
 
     @Override
     public void open() {
@@ -37,8 +37,8 @@ public class AmoebaMenu implements Menu {
     private void processChosenOption(MenuOption option) {
         boolean backToMainMenu = true;
         switch (option) {
-            case NEW_GAME -> game.startNewGame();
-            case LOAD_GAME -> game.loadGame();
+            case NEW_GAME -> gameController.startNewGame();
+            case LOAD_GAME -> gameController.loadGame();
             case EXIT -> {
                 writer.farewell();
                 backToMainMenu = false;

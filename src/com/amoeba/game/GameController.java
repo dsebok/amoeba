@@ -1,6 +1,6 @@
 package com.amoeba.game;
 
-public interface Game {
+public interface GameController {
 
     void startNewGame();
 

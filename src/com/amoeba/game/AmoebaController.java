@@ -12,7 +12,7 @@ import com.amoeba.io.Writer;
 
 import java.util.Properties;
 
-public class AmoebaGame implements com.amoeba.game.Game {
+public class AmoebaController implements GameController {
 
     private final Reader reader = new InputReader();
     private final Writer writer = new OutputWriter();
@@ -63,13 +63,7 @@ public class AmoebaGame implements com.amoeba.game.Game {
                 checkGameState(game, playerName);
             }
             if (response.isSave()) {
-                String saveName = response.getSaveName();
-                //TODO
-                //csak a-zA-Z0-9_
-                //- mentésnél ellenőrzés felülírásra, nem válasz esetén új filenév bekérése
-                service.saveGame(game, saveName);
-                game.setSaved();
-                writer.saveMessage();
+                saveTheGame(game, response);
             }
         }
     }
@@ -107,6 +101,16 @@ public class AmoebaGame implements com.amoeba.game.Game {
             drawBoard(game);
             writer.winMessage(playerName);
         }
+    }
+
+    private void saveTheGame(Game game, Response response) {
+        String saveName = response.getSaveName();
+        //TODO
+        //csak a-zA-Z0-9_
+        //- mentésnél ellenőrzés felülírásra, nem válasz esetén új filenév bekérése
+        service.saveGame(game, saveName);
+        game.setSaved();
+        writer.saveMessage();
     }
 
 }
